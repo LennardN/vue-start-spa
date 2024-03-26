@@ -1,8 +1,8 @@
 <template>
     <a 
         class="nav-link"
-        :class="activeClasses" 
         aria-current="page" 
+        :class="activeClasses" 
         :href="page.link.url" 
         :title="`This link goes to the ${page.link.text} Page`">
         {{page.link.text}}
