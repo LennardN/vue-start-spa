@@ -5,12 +5,12 @@
         "content": "This is Home"
     },
     {
-        "link": {"text": "Contact", "url": "index.html"},
+        "link": {"text": "Contact", "url": "contact.html"},
         "title": "Contact Title",
         "content": "This is Contact"
     },
     {
-        "link": {"text": "About", "url": "index.html"},
+        "link": {"text": "About", "url": "about.html"},
         "title": "About Title",
         "content": "This is About"
     }

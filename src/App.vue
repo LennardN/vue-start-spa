@@ -3,16 +3,19 @@
         :pages="pages" 
         :active-page="activePage"
         :nav-link-click="(index) => activePage = index"></Navbar>
-    <PageViewer v-if="pages.length > 0" :page="pages[activePage]"></PageViewer>
+    <!-- <PageViewer :page="pages[activePage]"></PageViewer> -->
+    <CreatePage class="mt-4" :page-created="pageCreated"></CreatePage>
 </template>
 <script>
 import PageViewer from "./components/PageViewer.vue"
 import Navbar from "./components/Navbar.vue"
+import CreatePage from "./components/CreatePage.vue"
 
 export default {
     components: {
         PageViewer,
-        Navbar
+        Navbar,
+        CreatePage
     },
     created(){
         this.getPages()
@@ -28,6 +31,9 @@ export default {
         async getPages(){
             let res = await fetch('pages.json')
             this.pages = await res.json()
+        },
+        pageCreated(pageObj){
+            console.log(pageObj)
         }
     }
 }
