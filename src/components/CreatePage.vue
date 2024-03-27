@@ -48,7 +48,7 @@
                     </div>
                     <div class="row mb-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox"/>
+                            <input class="form-check-input" type="checkbox" v-model="published"/>
                             <label class="form-check-label" for="gridCheck1">
                                 Published
                             </label>
@@ -59,8 +59,9 @@
            <div class="mb-3">
                 <button
                     class="btn btn-primary"
-                    @click.prevent="submitForm">
-                    Create Page
+                    @click.prevent="submitForm"
+                    :disabled="!isFormInvalid">
+                    Create Page 
                 </button>
            </div>
         </form>
@@ -68,25 +69,47 @@
 </template>
 <script>
 export default{
-    props: ['pageCreated'],
+    emits: ['pageCreated'], //Optional
+    computed: {
+        isFormInvalid(){
+            if(this.pageTitle && this.pageContent && this.linkText && this.linkUrl){
+                return true
+            }
+        }
+    },
     data(){
         return {
             pageTitle: "",
             pageContent: "",
             linkText: "",
-            linkUrl: ""
+            linkUrl: "",
+            published: true
         }
     },
     methods: {
-        submitForm(){
-            if(!this.pageTitle || !this.pageContent || !this.linkText || !this.pageTitle){
-                alert("Form is not filled")
-                return
-            }
-            this.pageCreated({
+        submitForm(){    
+            this.$emit("pageCreated", {
                 pageTitle: this.pageTitle,
-                pageContent: this.pageContent
+                pageContent: this.pageContent,
+                link: {
+                    text: this.linkText,
+                    url: this.linkUrl
+                },
+                published: this.published
             })
+            //this.pageCreated()
+            this.pageTitle = ""
+            this.pageContent = ""
+            this.linkText = ""
+            this.linkUrl = ""
+            this.published = true
+        }
+    },
+    watch: {
+        pageTitle(newTitle, oldTitle){
+            if(this.linkText === oldTitle){
+                this.linkText = newTitle
+            }
         }
     }
 }

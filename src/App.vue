@@ -4,7 +4,7 @@
         :active-page="activePage"
         :nav-link-click="(index) => activePage = index"></Navbar>
     <!-- <PageViewer :page="pages[activePage]"></PageViewer> -->
-    <CreatePage class="mt-4" :page-created="pageCreated"></CreatePage>
+    <CreatePage class="mt-4" @page-created="pageCreated"></CreatePage>
 </template>
 <script>
 import PageViewer from "./components/PageViewer.vue"
@@ -33,7 +33,7 @@ export default {
             this.pages = await res.json()
         },
         pageCreated(pageObj){
-            console.log(pageObj)
+            this.pages.push(pageObj)
         }
     }
 }
