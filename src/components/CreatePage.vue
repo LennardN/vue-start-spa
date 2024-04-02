@@ -46,7 +46,7 @@
                             v-model="linkUrl"
                         />
                     </div>
-                    <div class="row mb-3">
+                    <div class="mb-3">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" v-model="published"/>
                             <label class="form-check-label" for="gridCheck1">
@@ -69,7 +69,7 @@
 </template>
 <script>
 export default{
-    emits: ['pageCreated'], //Optional
+    emits: ['pageCreated'], //Optional?
     computed: {
         isFormInvalid(){
             if(this.pageTitle && this.pageContent && this.linkText && this.linkUrl){
@@ -89,15 +89,14 @@ export default{
     methods: {
         submitForm(){    
             this.$emit("pageCreated", {
-                pageTitle: this.pageTitle,
-                pageContent: this.pageContent,
+                title: this.pageTitle,
+                content: this.pageContent,
                 link: {
                     text: this.linkText,
                     url: this.linkUrl
                 },
                 published: this.published
             })
-            //this.pageCreated()
             this.pageTitle = ""
             this.pageContent = ""
             this.linkText = ""

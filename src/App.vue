@@ -3,8 +3,8 @@
         :pages="pages" 
         :active-page="activePage"
         :nav-link-click="(index) => activePage = index"></Navbar>
-    <!-- <PageViewer :page="pages[activePage]"></PageViewer> -->
-    <CreatePage class="mt-4" @page-created="pageCreated"></CreatePage>
+    <PageViewer class="mt-4" :page="pages[activePage]"></PageViewer>
+    <CreatePage class="mt-5" @page-created="pageCreated"></CreatePage>
 </template>
 <script>
 import PageViewer from "./components/PageViewer.vue"
