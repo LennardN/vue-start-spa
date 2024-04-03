@@ -10,7 +10,6 @@
                             @click.prevent="navLinkClick(index)"
                             :isActive="activePage == index">
                         </navbar-link>
-                        
                     </li>
                 </ul>
                 <form class="d-flex">
