@@ -1,13 +1,18 @@
 <template>
     <div class="container">
-        <h1>Test</h1>
-        <p>{{$route.params.index}}</p>
+        <h1>{{page.title}}</h1>
+        <p>{{page.content}}</p>
     </div>
 </template>
 <script>
 export default{
     created(){
-        this.$route.params.index
+        this.page = this.$pages.getSinglePage(this.$route.params.index)
+    },
+    data(){
+        return {
+            page: null
+        }
     }
 }
 </script>
