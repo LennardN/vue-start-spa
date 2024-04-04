@@ -8,6 +8,7 @@ export default{
         return pagesStore
     },
     getSinglePage(index){
+        console.log(index)
         return pagesStore[index]
     }
 }

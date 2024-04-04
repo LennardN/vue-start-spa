@@ -2,7 +2,8 @@
     <Navbar 
         :pages="pages" 
         :active-page="activePage"
-        :nav-link-click="(index) => activePage = index"></Navbar>
+        :nav-link-click="(index) => activePage = index">
+    </Navbar>
     <RouterView></RouterView>
     <!--<PageViewer class="mt-4" :page="pages[activePage]"></PageViewer>
     <CreatePage class="mt-5" @page-created="pageCreated"></CreatePage>-->

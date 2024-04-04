@@ -7,7 +7,8 @@
                     <li v-for="(page, index) in publishedPages" class="nav-item" :key="index">
                         <navbar-link
                             :page="page"
-                            @click.prevent="navLinkClick(index)"
+                            :index="index"
+                            @click="navLinkClick(index)"
                             :isActive="activePage == index">
                         </navbar-link>
                     </li>
